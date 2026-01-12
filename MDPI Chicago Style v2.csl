@@ -265,3 +265,47 @@
                   </date>
                 </else>
               </choose>
+            </group>
+          </if>
+          <else-if variable="issue">
+            <group delimiter=" " prefix=", ">
+              <text term="issue" form="short"/>
+              <text variable="issue"/>
+              <date variable="issued" prefix="(" suffix=")">
+                <date-part name="month"/>
+              </date>
+            </group>
+          </else-if>
+          <else>
+            <date variable="issued" prefix=", ">
+              <date-part name="month"/>
+            </date>
+          </else>
+        </choose>
+      </if>
+    </choose>
+  </macro>
+  <citation et-al-min="4" et-al-use-first="1" disambiguate-add-year-suffix="true" collapse="year">
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <group delimiter=" ">
+          <text macro="contributors-short"/>
+          <text macro="date-in-text"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="contributors"/>
+      <key variable="issued"/>
+    </sort>
+    <layout suffix=".">
+      <group delimiter=". ">
+        <text macro="contributors"/>
+        <text macro="date"/>
+        <text macro="title"/>
+      </group>
+    </layout>
+  </bibliography>
+</style>
